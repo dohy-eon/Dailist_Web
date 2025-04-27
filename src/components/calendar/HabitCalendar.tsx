@@ -42,7 +42,7 @@ export const HabitCalendar: React.FC = () => {
               onClick={() =>
                 setSelectedDate(new Date(selectedDate.setMonth(selectedDate.getMonth() - 1)))
               }
-              className="p-2 rounded-lg hover:bg-gray-800 text-gray-300 transition-colors"
+              className="p-2 rounded-lg hover:bg-gray-800 text-gray-900 hover:text-gray-300 transition-colors"
             >
               ←
             </button>
@@ -50,7 +50,7 @@ export const HabitCalendar: React.FC = () => {
               onClick={() =>
                 setSelectedDate(new Date(selectedDate.setMonth(selectedDate.getMonth() + 1)))
               }
-              className="p-2 rounded-lg hover:bg-gray-800 text-gray-300 transition-colors"
+              className="p-2 rounded-lg hover:bg-gray-800 text-gray-900 hover:text-gray-300 transition-colors"
             >
               →
             </button>
