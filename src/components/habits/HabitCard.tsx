@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Habit } from '@/types/habit';
 import { Button } from '@/components/common/Button';
 import { useHabitStore } from '@/store/habitStore';
 import { format } from 'date-fns';
 import { ko } from 'date-fns/locale';
+import { HabitDetailStats } from '@/components/stats/HabitDetailStats';
 
 interface HabitCardProps {
   habit: Habit;
@@ -42,6 +43,7 @@ const calculateHabitStreak = (habitId: string, completions: any[], date: string)
 
 export const HabitCard: React.FC<HabitCardProps> = ({ habit, date }) => {
   const { toggleCompletion, completions } = useHabitStore();
+  const [showStats, setShowStats] = useState(false);
   
   const isCompleted = completions.some(
     (c) => c.habitId === habit.id && c.date === date && c.completed
@@ -54,35 +56,61 @@ export const HabitCard: React.FC<HabitCardProps> = ({ habit, date }) => {
   };
 
   return (
-    <div
-      className="p-2 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow"
-      style={{ borderLeftColor: habit.color, borderLeftWidth: '4px' }}
-    >
-      <div className="flex items-center justify-between">
-        <div className="flex items-center space-x-2">
-          <span className="text-2xl">{habit.icon}</span>
-          <div>
-            <h3 className="font-medium text-gray-900">{habit.name}</h3>
-            <div className="flex items-center space-x-2">
-              <p className="text-sm text-gray-500">
-                {format(new Date(date), 'PPP', { locale: ko })}
-              </p>
-              {currentStreak > 0 && (
-                <span className="text-sm font-medium text-emerald-600">
-                  🔥 {currentStreak}일 연속
-                </span>
-              )}
+    <>
+      <div
+        className="p-2 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow cursor-pointer"
+        style={{ borderLeftColor: habit.color, borderLeftWidth: '4px' }}
+        onClick={() => setShowStats(true)}
+      >
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-2">
+            <span className="text-2xl">{habit.icon}</span>
+            <div>
+              <h3 className="font-medium text-gray-900">{habit.name}</h3>
+              <div className="flex items-center space-x-2">
+                <p className="text-sm text-gray-500">
+                  {format(new Date(date), 'PPP', { locale: ko })}
+                </p>
+                {currentStreak > 0 && (
+                  <span className="text-sm font-medium text-emerald-600">
+                    🔥 {currentStreak}일 연속
+                  </span>
+                )}
+              </div>
+            </div>
+          </div>
+          <Button
+            variant={isCompleted ? 'primary' : 'outline'}
+            size="small"
+            onClick={(e) => {
+              e.stopPropagation();
+              handleToggle();
+            }}
+          >
+            {isCompleted ? '완료됨' : '완료하기'}
+          </Button>
+        </div>
+      </div>
+
+      {showStats && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="p-4 border-b flex justify-between items-center">
+              <h2 className="text-lg font-semibold">습관 상세 통계</h2>
+              <Button
+                variant="outline"
+                size="small"
+                onClick={() => setShowStats(false)}
+              >
+                ✕
+              </Button>
+            </div>
+            <div className="p-4">
+              <HabitDetailStats habit={habit} />
             </div>
           </div>
         </div>
-        <Button
-          variant={isCompleted ? 'primary' : 'outline'}
-          size="small"
-          onClick={handleToggle}
-        >
-          {isCompleted ? '완료됨' : '완료하기'}
-        </Button>
-      </div>
-    </div>
+      )}
+    </>
   );
 }; 

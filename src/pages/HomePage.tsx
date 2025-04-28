@@ -63,7 +63,7 @@ export const HomePage: React.FC = () => {
               <Button 
                 variant="secondary" 
                 size="small" 
-                className="bg-gray-100 hover:bg-gray-800 text-gray-900 hover:text-gray-300 transition-colors"
+                className="bg-gray-100 hover:bg-gray-800 text-gray-100 hover:text-gray-300 transition-colors"
                 onClick={handleAddHabit}
               >
                 + 습관 추가
