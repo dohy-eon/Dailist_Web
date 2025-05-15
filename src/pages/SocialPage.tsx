@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { FriendsList } from '@/components/social/FriendsList';
 import { ShareHabitModal } from '@/components/social/ShareHabitModal';
-import { useSocialStore } from '@/store/socialStore';
 import { Habit } from '@/types/habit';
 
 export const SocialPage: React.FC = () => {
