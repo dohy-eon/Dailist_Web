@@ -1,14 +1,9 @@
 import React from 'react';
 import { useSocialStore } from '@/store/socialStore';
-import { User } from '@/types/social';
 import { Button } from '@/components/common/Button';
 
 export const FriendsList: React.FC = () => {
-  const { friends, friendships, addFriend } = useSocialStore();
-
-  const handleAddFriend = (friendId: string) => {
-    addFriend(friendId);
-  };
+  const { friends, friendships } = useSocialStore();
 
   const pendingRequests = friendships.filter(
     (f) => f.status === 'pending' && f.friendId === 'current-user-id'

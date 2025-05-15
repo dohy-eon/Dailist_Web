@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { useSocialStore } from '@/store/socialStore';
 import { useHabitStore } from '@/store/habitStore';
-import { User, SocialStats } from '@/types/social';
+import { User } from '@/types/social';
 import { Button } from '@/components/common/Button';
 import { format } from 'date-fns';
 import { ko } from 'date-fns/locale';
+import { Habit } from '@/types/habit';
 
 interface FriendHabitStatusProps {
   friend: User;

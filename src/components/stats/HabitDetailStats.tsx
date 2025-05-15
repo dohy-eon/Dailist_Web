@@ -11,7 +11,6 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 import { format, subDays, eachDayOfInterval } from 'date-fns';
-import { ko } from 'date-fns/locale';
 
 interface HabitDetailStatsProps {
   habit: Habit;

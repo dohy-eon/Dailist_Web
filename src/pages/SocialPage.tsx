@@ -10,11 +10,6 @@ export const SocialPage: React.FC = () => {
   const [shareModalOpen, setShareModalOpen] = useState(false);
   const [selectedHabit, setSelectedHabit] = useState<Habit | null>(null);
 
-  const handleShareHabit = (habit: Habit) => {
-    setSelectedHabit(habit);
-    setShareModalOpen(true);
-  };
-
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-2xl font-bold mb-6">소셜</h1>
