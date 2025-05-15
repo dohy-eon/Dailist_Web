@@ -11,7 +11,6 @@ import { Button } from '@/components/common/Button';
 
 export const HomePage: React.FC = () => {
   const { habits } = useHabitStore();
-  const today = format(new Date(), 'yyyy-MM-dd');
   const [isAddHabitModalOpen, setIsAddHabitModalOpen] = useState(false);
 
   const todayHabits = habits.filter((habit) => {
@@ -71,7 +70,7 @@ export const HomePage: React.FC = () => {
             </div>
             <div className="space-y-2">
               {todayHabits.map((habit) => (
-                <HabitCard key={habit.id} habit={habit} date={today} />
+                <HabitCard key={habit.id} habit={habit} date={format(new Date(), 'yyyy-MM-dd')} />
               ))}
               {todayHabits.length === 0 && (
                 <p className="text-gray-400 text-center py-4 bg-gray-800 rounded-lg">

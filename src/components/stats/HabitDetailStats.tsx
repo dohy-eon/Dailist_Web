@@ -53,18 +53,6 @@ export const HabitDetailStats: React.FC<HabitDetailStatsProps> = ({ habit }) => 
     }
   }
 
-  // 최장 Streak 계산
-  let maxStreak = 0;
-  let tempStreak = 0;
-  chartData.forEach(day => {
-    if (day.completed === 1) {
-      tempStreak++;
-      maxStreak = Math.max(maxStreak, tempStreak);
-    } else {
-      tempStreak = 0;
-    }
-  });
-
   return (
     <div className="space-y-6 p-4 bg-white rounded-lg shadow">
       <div className="flex items-center space-x-4">
@@ -75,7 +63,7 @@ export const HabitDetailStats: React.FC<HabitDetailStatsProps> = ({ habit }) => 
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="bg-gray-50 p-4 rounded-lg">
           <h3 className="text-sm font-medium text-gray-500">성공률</h3>
           <p className="mt-1 text-2xl font-semibold text-gray-900">{successRate}%</p>
@@ -84,12 +72,6 @@ export const HabitDetailStats: React.FC<HabitDetailStatsProps> = ({ habit }) => 
           <h3 className="text-sm font-medium text-gray-500">현재 연속</h3>
           <p className="mt-1 text-2xl font-semibold text-gray-900">
             {currentStreak}일 🔥
-          </p>
-        </div>
-        <div className="bg-gray-50 p-4 rounded-lg">
-          <h3 className="text-sm font-medium text-gray-500">최장 연속</h3>
-          <p className="mt-1 text-2xl font-semibold text-gray-900">
-            {maxStreak}일 🏆
           </p>
         </div>
       </div>

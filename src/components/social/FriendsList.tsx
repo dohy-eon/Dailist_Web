@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSocialStore } from '@/store/socialStore';
 import { User } from '@/types/social';
 import { Button } from '@/components/common/Button';
 
 export const FriendsList: React.FC = () => {
   const { friends, friendships, addFriend } = useSocialStore();
-  const [searchQuery, setSearchQuery] = useState('');
 
   const handleAddFriend = (friendId: string) => {
     addFriend(friendId);
@@ -17,19 +16,6 @@ export const FriendsList: React.FC = () => {
 
   return (
     <div className="space-y-4">
-      <div className="flex items-center space-x-2">
-        <input
-          type="text"
-          placeholder="친구 검색..."
-          className="flex-1 p-2 border rounded-lg"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
-        <Button variant="primary" size="small">
-          검색
-        </Button>
-      </div>
-
       {pendingRequests.length > 0 && (
         <div className="bg-yellow-50 p-4 rounded-lg">
           <h3 className="font-medium text-yellow-800">친구 요청</h3>
@@ -49,7 +35,7 @@ export const FriendsList: React.FC = () => {
         </div>
       )}
 
-      <div className="space-y-2">
+      <div>
         <h3 className="font-medium text-gray-900">친구 목록</h3>
         {friends.map((friend) => (
           <div

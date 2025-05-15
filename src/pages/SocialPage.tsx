@@ -7,7 +7,6 @@ import { Habit } from '@/types/habit';
 
 export const SocialPage: React.FC = () => {
   const { friends } = useSocialStore();
-  const [selectedFriend, setSelectedFriend] = useState<string | null>(null);
   const [shareModalOpen, setShareModalOpen] = useState(false);
   const [selectedHabit, setSelectedHabit] = useState<Habit | null>(null);
 
@@ -15,8 +14,6 @@ export const SocialPage: React.FC = () => {
     setSelectedHabit(habit);
     setShareModalOpen(true);
   };
-
-  const selectedFriendData = friends.find(f => f.id === selectedFriend);
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -32,17 +29,11 @@ export const SocialPage: React.FC = () => {
 
         {/* 메인 컨텐츠: 선택된 친구의 습관 현황 */}
         <div className="lg:col-span-2">
-          {selectedFriendData ? (
-            <div className="bg-white rounded-lg shadow p-4">
-              <FriendHabitStatus friend={selectedFriendData} />
-            </div>
-          ) : (
-            <div className="bg-white rounded-lg shadow p-8 text-center">
-              <p className="text-gray-500">
-                왼쪽에서 친구를 선택하여 습관 현황을 확인하세요
-              </p>
-            </div>
-          )}
+          <div className="bg-white rounded-lg shadow p-8 text-center">
+            <p className="text-gray-500">
+              왼쪽에서 친구를 선택하여 습관 현황을 확인하세요
+            </p>
+          </div>
         </div>
       </div>
 
