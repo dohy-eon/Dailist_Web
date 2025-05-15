@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import { FriendsList } from '@/components/social/FriendsList';
-import { FriendHabitStatus } from '@/components/social/FriendHabitStatus';
 import { ShareHabitModal } from '@/components/social/ShareHabitModal';
 import { useSocialStore } from '@/store/socialStore';
 import { Habit } from '@/types/habit';
 
 export const SocialPage: React.FC = () => {
-  const { friends } = useSocialStore();
   const [shareModalOpen, setShareModalOpen] = useState(false);
   const [selectedHabit, setSelectedHabit] = useState<Habit | null>(null);
 
