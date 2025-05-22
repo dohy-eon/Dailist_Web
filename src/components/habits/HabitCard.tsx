@@ -10,7 +10,13 @@ interface HabitCardProps {
   date: string;
 }
 
-const calculateHabitStreak = (habitId: string, completions: any[]): number => {
+interface HabitCompletion {
+  habitId: string;
+  date: string;
+  completed: boolean;
+}
+
+const calculateHabitStreak = (habitId: string, completions: HabitCompletion[]): number => {
   const sortedCompletions = completions
     .filter(c => c.habitId === habitId && c.completed)
     .map(c => c.date)
