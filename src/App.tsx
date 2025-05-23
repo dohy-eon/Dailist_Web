@@ -12,7 +12,7 @@ interface ProtectedRouteProps {
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
   const { isAuthenticated } = useAuthStore();
-  return isAuthenticated ? <>{children}</> : <Navigate to="/login" />;
+  return isAuthenticated ? <>{children}</> : <Navigate to='/login' />;
 };
 
 function App() {
@@ -20,11 +20,11 @@ function App() {
 
   return (
     <Router>
-      <div className="min-h-screen bg-gray-50">
+      <div className='min-h-screen bg-gray-50'>
         {isAuthenticated && <Navbar />}
         <Routes>
           <Route
-            path="/"
+            path='/'
             element={
               <ProtectedRoute>
                 <HomePage />
@@ -32,25 +32,19 @@ function App() {
             }
           />
           <Route
-            path="/social"
+            path='/social'
             element={
               <ProtectedRoute>
                 <SocialPage />
               </ProtectedRoute>
             }
           />
-          <Route
-            path="/login"
-            element={isAuthenticated ? <Navigate to="/" /> : <LoginPage />}
-          />
-          <Route
-            path="/signup"
-            element={isAuthenticated ? <Navigate to="/" /> : <SignupPage />}
-          />
+          <Route path='/login' element={isAuthenticated ? <Navigate to='/' /> : <LoginPage />} />
+          <Route path='/signup' element={isAuthenticated ? <Navigate to='/' /> : <SignupPage />} />
         </Routes>
       </div>
     </Router>
   );
 }
 
-export default App; 
+export default App;

@@ -42,9 +42,7 @@ export const useHabitStore = create<HabitState>()(
       updateHabit: (id, habit) => {
         set((state) => ({
           habits: state.habits.map((h) =>
-            h.id === id
-              ? { ...h, ...habit, updatedAt: new Date().toISOString() }
-              : h
+            h.id === id ? { ...h, ...habit, updatedAt: new Date().toISOString() } : h,
           ),
         }));
         get().calculateStats();
@@ -61,15 +59,13 @@ export const useHabitStore = create<HabitState>()(
       toggleCompletion: (habitId, date) => {
         set((state) => {
           const existingCompletion = state.completions.find(
-            (c) => c.habitId === habitId && c.date === date
+            (c) => c.habitId === habitId && c.date === date,
           );
 
           if (existingCompletion) {
             return {
               completions: state.completions.map((c) =>
-                c.id === existingCompletion.id
-                  ? { ...c, completed: !c.completed }
-                  : c
+                c.id === existingCompletion.id ? { ...c, completed: !c.completed } : c,
               ),
             };
           }
@@ -96,15 +92,15 @@ export const useHabitStore = create<HabitState>()(
         const thisMonth = getMonthDates();
 
         const completedToday = state.completions.filter(
-          (c) => c.date === today && c.completed
+          (c) => c.date === today && c.completed,
         ).length;
 
         const weeklyCompletions = state.completions.filter(
-          (c) => thisWeek.includes(c.date) && c.completed
+          (c) => thisWeek.includes(c.date) && c.completed,
         ).length;
 
         const monthlyCompletions = state.completions.filter(
-          (c) => thisMonth.includes(c.date) && c.completed
+          (c) => thisMonth.includes(c.date) && c.completed,
         ).length;
 
         set((state) => ({
@@ -124,8 +120,8 @@ export const useHabitStore = create<HabitState>()(
     }),
     {
       name: 'habit-storage',
-    }
-  )
+    },
+  ),
 );
 
 // Utility functions
@@ -168,7 +164,7 @@ function calculateStreak(completions: HabitCompletion[]): number {
   for (let i = 1; i < sortedCompletions.length; i++) {
     const prevDate = new Date(sortedCompletions[i]);
     const diffDays = Math.floor(
-      (currentDate.getTime() - prevDate.getTime()) / (1000 * 60 * 60 * 24)
+      (currentDate.getTime() - prevDate.getTime()) / (1000 * 60 * 60 * 24),
     );
 
     if (diffDays === 1) {
@@ -180,4 +176,4 @@ function calculateStreak(completions: HabitCompletion[]): number {
   }
 
   return streak;
-} 
+}

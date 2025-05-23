@@ -22,4 +22,4 @@ export interface LoginCredentials {
 export interface SocialLoginOptions {
   provider: 'google' | 'github';
   accessToken: string;
-} 
+}

@@ -44,36 +44,36 @@ export const HomePage: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-6">
+    <div className='container mx-auto px-4 py-6'>
       <Header />
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-        <section className="w-full">
-          <div className="w-full max-w-[491px] mx-auto">
-            <h2 className="text-xl font-semibold text-gray-900 text-center mb-4">캘린더</h2>
+      <div className='grid grid-cols-1 sm:grid-cols-2 gap-8'>
+        <section className='w-full'>
+          <div className='w-full max-w-[491px] mx-auto'>
+            <h2 className='text-xl font-semibold text-gray-900 text-center mb-4'>캘린더</h2>
             <HabitCalendar />
           </div>
         </section>
 
-        <section className="w-full">
-          <div className="w-full max-w-[491px] mx-auto space-y-4">
-            <div className="flex justify-between items-center">
-              <h2 className="text-xl font-semibold text-gray-900">오늘의 습관</h2>
-              <Button 
-                variant="secondary" 
-                size="small" 
-                className="bg-gray-100 hover:bg-gray-800 text-gray-100 hover:text-gray-300 transition-colors"
+        <section className='w-full'>
+          <div className='w-full max-w-[491px] mx-auto space-y-4'>
+            <div className='flex justify-between items-center'>
+              <h2 className='text-xl font-semibold text-gray-900'>오늘의 습관</h2>
+              <Button
+                variant='secondary'
+                size='small'
+                className='bg-gray-100 hover:bg-gray-800 text-gray-100 hover:text-gray-300 transition-colors'
                 onClick={handleAddHabit}
               >
                 + 습관 추가
               </Button>
             </div>
-            <div className="space-y-2">
+            <div className='space-y-2'>
               {todayHabits.map((habit) => (
                 <HabitCard key={habit.id} habit={habit} date={format(new Date(), 'yyyy-MM-dd')} />
               ))}
               {todayHabits.length === 0 && (
-                <p className="text-gray-400 text-center py-4 bg-gray-800 rounded-lg">
+                <p className='text-gray-400 text-center py-4 bg-gray-800 rounded-lg'>
                   오늘은 예정된 습관이 없습니다.
                 </p>
               )}
@@ -82,13 +82,9 @@ export const HomePage: React.FC = () => {
         </section>
       </div>
 
-      <Modal 
-        isOpen={isAddHabitModalOpen} 
-        onClose={handleCloseModal} 
-        title="새 습관 추가"
-      >
+      <Modal isOpen={isAddHabitModalOpen} onClose={handleCloseModal} title='새 습관 추가'>
         <HabitForm onSubmit={handleCloseModal} />
       </Modal>
     </div>
   );
-}; 
+};

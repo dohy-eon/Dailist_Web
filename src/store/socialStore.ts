@@ -39,7 +39,7 @@ export const useSocialStore = create<SocialState>((set) => ({
   acceptFriendRequest: (friendshipId) => {
     set((state) => ({
       friendships: state.friendships.map((f) =>
-        f.id === friendshipId ? { ...f, status: 'accepted' } : f
+        f.id === friendshipId ? { ...f, status: 'accepted' } : f,
       ),
     }));
   },
@@ -78,8 +78,8 @@ export const useSocialStore = create<SocialState>((set) => ({
   updateSocialStats: (stats) => {
     set((state) => ({
       socialStats: state.socialStats.map((s) =>
-        s.userId === stats.userId && s.habitId === stats.habitId ? stats : s
+        s.userId === stats.userId && s.habitId === stats.habitId ? stats : s,
       ),
     }));
   },
-})); 
+}));

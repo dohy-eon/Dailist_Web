@@ -66,72 +66,60 @@ export const HabitForm: React.FC<HabitFormProps> = ({ habit, onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className='space-y-4'>
       <div>
-        <label className="block text-sm font-medium text-gray-300">습관 이름</label>
+        <label className='block text-sm font-medium text-gray-300'>습관 이름</label>
         <input
-          type="text"
+          type='text'
           value={formData.name}
-          onChange={(e) =>
-            setFormData((prev) => ({ ...prev, name: e.target.value }))
-          }
-          className="mt-1 block w-full rounded-md border-gray-700 bg-gray-800 text-gray-100 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+          onChange={(e) => setFormData((prev) => ({ ...prev, name: e.target.value }))}
+          className='mt-1 block w-full rounded-md border-gray-700 bg-gray-800 text-gray-100 shadow-sm focus:border-indigo-500 focus:ring-indigo-500'
           required
         />
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-300">아이콘</label>
+        <label className='block text-sm font-medium text-gray-300'>아이콘</label>
         <input
-          type="text"
+          type='text'
           value={formData.icon}
-          onChange={(e) =>
-            setFormData((prev) => ({ ...prev, icon: e.target.value }))
-          }
-          className="mt-1 block w-full rounded-md border-gray-700 bg-gray-800 text-gray-100 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+          onChange={(e) => setFormData((prev) => ({ ...prev, icon: e.target.value }))}
+          className='mt-1 block w-full rounded-md border-gray-700 bg-gray-800 text-gray-100 shadow-sm focus:border-indigo-500 focus:ring-indigo-500'
           required
         />
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-300">색상</label>
+        <label className='block text-sm font-medium text-gray-300'>색상</label>
         <input
-          type="color"
+          type='color'
           value={formData.color}
-          onChange={(e) =>
-            setFormData((prev) => ({ ...prev, color: e.target.value }))
-          }
-          className="mt-1 block w-full h-10 rounded-md border-gray-700 bg-gray-800"
+          onChange={(e) => setFormData((prev) => ({ ...prev, color: e.target.value }))}
+          className='mt-1 block w-full h-10 rounded-md border-gray-700 bg-gray-800'
         />
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-300">
-          반복 주기
-        </label>
+        <label className='block text-sm font-medium text-gray-300'>반복 주기</label>
         <select
           value={formData.frequency}
-          onChange={(e) =>
-            handleFrequencyChange(e.target.value as HabitFrequency)
-          }
-          className="mt-1 block w-full rounded-md border-gray-700 bg-gray-800 text-gray-100 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+          onChange={(e) => handleFrequencyChange(e.target.value as HabitFrequency)}
+          className='mt-1 block w-full rounded-md border-gray-700 bg-gray-800 text-gray-100 shadow-sm focus:border-indigo-500 focus:ring-indigo-500'
         >
-          <option value="daily">매일</option>
-          <option value="weekly">매주</option>
-          <option value="custom">사용자 지정</option>
+          <option value='daily'>매일</option>
+          <option value='weekly'>매주</option>
+          <option value='custom'>사용자 지정</option>
         </select>
       </div>
 
       {formData.frequency === 'custom' && (
         <div>
-          <label className="block text-sm font-medium text-gray-300">
-            요일 선택
-          </label>
-          <div className="mt-2 flex flex-wrap gap-2">
+          <label className='block text-sm font-medium text-gray-300'>요일 선택</label>
+          <div className='mt-2 flex flex-wrap gap-2'>
             {WEEKDAYS.map((day) => (
               <button
                 key={day}
-                type="button"
+                type='button'
                 onClick={() => handleDayToggle(day)}
                 className={`px-3 py-1 rounded-full text-sm ${
                   formData.customDays.includes(day)
@@ -146,9 +134,9 @@ export const HabitForm: React.FC<HabitFormProps> = ({ habit, onSubmit }) => {
         </div>
       )}
 
-      <Button type="submit" fullWidth>
+      <Button type='submit' fullWidth>
         {habit ? '습관 수정하기' : '습관 만들기'}
       </Button>
     </form>
   );
-}; 
+};

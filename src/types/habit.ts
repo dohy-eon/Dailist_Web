@@ -1,6 +1,13 @@
 export type HabitFrequency = 'daily' | 'weekly' | 'custom';
 
-export type WeekDay = 'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday' | 'saturday' | 'sunday';
+export type WeekDay =
+  | 'monday'
+  | 'tuesday'
+  | 'wednesday'
+  | 'thursday'
+  | 'friday'
+  | 'saturday'
+  | 'sunday';
 
 export interface Habit {
   id: string;
@@ -26,4 +33,4 @@ export interface HabitStats {
   streak: number;
   weeklyProgress: number;
   monthlyProgress: number;
-} 
+}

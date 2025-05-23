@@ -15,7 +15,7 @@ export const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   const baseStyles = 'rounded-lg font-medium transition-colors duration-200';
-  
+
   const variantStyles = {
     primary: 'bg-indigo-600 text-white hover:bg-indigo-700',
     secondary: 'bg-gray-700 text-gray-100 hover:bg-gray-600',
@@ -38,4 +38,4 @@ export const Button: React.FC<ButtonProps> = ({
       {children}
     </button>
   );
-}; 
+};

@@ -37,4 +37,4 @@ export interface SocialStats {
   currentStreak: number;
   totalCompletions: number;
   lastCompleted: string;
-} 
+}

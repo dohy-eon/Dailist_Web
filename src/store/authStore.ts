@@ -55,4 +55,4 @@ export const useAuthStore = create<AuthStore>((set) => ({
   clearError: () => {
     set({ error: null });
   },
-})); 
+}));
